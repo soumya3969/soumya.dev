@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { FiGithub, FiExternalLink, FiCode } from 'react-icons/fi'
+import { FiGithub, FiExternalLink } from 'react-icons/fi'
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('all')
@@ -120,13 +120,13 @@ const Projects = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="bg-dark-200 rounded-lg overflow-hidden card"
             >
-              <div className="h-48 overflow-hidden relative">
+              <div className="h-48 overflow-hidden relative group">
                 <img 
                   src={project.image} 
                   alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-125"
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-dark-400/80"></div>
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-dark-400/80 pointer-events-none"></div>
               </div>
               
               <div className="p-6">
@@ -139,19 +139,19 @@ const Projects = () => {
                   {project.technologies.map((tech, techIndex) => (
                     <span 
                       key={techIndex}
-                      className="text-xs bg-dark-100 text-secondary-400 px-2 py-1 rounded-full"
+                      className="text-xs bg-dark-100 text-secondary-400 px-2 py-1 rounded-full hover:shadow-[inset_0_0_0_1px_rgba(255,255,255,0.2)] transition-shadow duration-300"
                     >
                       {tech}
                     </span>
                   ))}
                 </div>
                 
-                <div className="flex space-x-4">
+                <div className="flex justify-between space-x-4">
                   <a 
                     href={project.github} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="flex items-center text-gray-300 hover:text-white transition-colors"
+                    className="flex items-center text-gray-300 hover:text-white hover:shadow-glow-strong py-1 px-2 rounded-full transition-colors"
                   >
                     <FiGithub className="mr-1" />
                     <span>Code</span>
@@ -162,7 +162,7 @@ const Projects = () => {
                       href={project.liveDemo} 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="flex items-center text-gray-300 hover:text-white transition-colors"
+                      className="flex items-center text-gray-300 hover:text-white hover:shadow-glow-strong py-1 px-2 rounded-full transition-colors"
                     >
                       <FiExternalLink className="mr-1" />
                       <span>Live Demo</span>
