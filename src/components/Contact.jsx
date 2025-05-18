@@ -1,8 +1,10 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { FiMail, FiPhone, FiMapPin, FiSend, FiUser, FiMessageSquare } from 'react-icons/fi'
+import emailjs from '@emailjs/browser'
 
 const Contact = () => {
+  const formRef = useRef()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -12,6 +14,7 @@ const Contact = () => {
   
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState(null)
+  const [errorMessage, setErrorMessage] = useState('')
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -21,16 +24,34 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setSubmitStatus(null)
+    setErrorMessage('')
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
     
-    // Simulating form submission
-    setTimeout(() => {
-      setIsSubmitting(false)
-      setSubmitStatus('success')
-      setFormData({ name: '', email: '', subject: '', message: '' })
-      
-      // Reset status after 3 seconds
-      setTimeout(() => setSubmitStatus(null), 3000)
-    }, 1500)
+    emailjs.sendForm(serviceId, templateId, formRef.current, publicKey)
+      .then((result) => {
+        console.log('Email sent successfully:', result.text)
+        setIsSubmitting(false)
+        setSubmitStatus('success')
+        setFormData({ name: '', email: '', subject: '', message: '' })
+        
+        // Reset status after 5 seconds
+        setTimeout(() => setSubmitStatus(null), 5000)
+      })
+      .catch((error) => {
+        console.error('Email sending failed:', error.text)
+        setIsSubmitting(false)
+        setSubmitStatus('error')
+        setErrorMessage('Failed to send message. Please try again later.')
+        
+        // Reset error after 5 seconds
+        setTimeout(() => {
+          setSubmitStatus(null)
+          setErrorMessage('')
+        }, 5000)
+      })
   }
 
   const contactInfo = [
@@ -44,7 +65,7 @@ const Contact = () => {
       icon: <FiPhone />,
       title: "Phone",
       value: "+91 99374 46657",
-      link: "tel:+911234567890"
+      link: "tel:+919937446657"
     },
     {
       icon: <FiMapPin />,
@@ -126,7 +147,7 @@ const Contact = () => {
               </div>
             </div>
             
-            <form onSubmit={handleSubmit}>
+            <form ref={formRef} onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 gap-6">
                 <div className="relative">
                   <label htmlFor="name" className="text-gray-300 text-sm mb-1 block">Full Name</label>
@@ -203,7 +224,7 @@ const Contact = () => {
                   <motion.button
                     type="submit"
                     disabled={isSubmitting}
-                    className="btn-primary w-full h-8 flex items-center justify-center"
+                    className="btn-primary w-full h-10 flex items-center justify-center"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
@@ -230,6 +251,16 @@ const Contact = () => {
                       className="mt-4 p-3 bg-green-500/20 text-green-400 rounded-lg text-center"
                     >
                       Message sent successfully! I&apos;ll get back to you soon.
+                    </motion.div>
+                  )}
+                  
+                  {submitStatus === 'error' && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="mt-4 p-3 bg-red-500/20 text-red-400 rounded-lg text-center"
+                    >
+                      {errorMessage}
                     </motion.div>
                   )}
                 </div>
