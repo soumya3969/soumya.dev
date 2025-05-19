@@ -94,7 +94,11 @@ const Hero = () => {
                 rel="noopener noreferrer"
               >
                 <FiDownload className="h-5 w-5" />
-                <span>Resume</span>
+                <a
+                  href="/documents/resume.pdf"
+                  download ="soumya_ranjan_resume.pdf"
+                  className="text-lg font-medium"
+                >Resume</a>
               </motion.a>
 
               <motion.div
