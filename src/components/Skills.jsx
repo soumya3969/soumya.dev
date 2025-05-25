@@ -363,6 +363,7 @@ const Skills = () => {
     autoplay: true,
     autoplaySpeed: 3000,
     pauseOnHover: true,
+    dotsClass: "slick-dots custom-dots",
     responsive: [
       {
         breakpoint: 1024,

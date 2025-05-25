@@ -2,6 +2,10 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { FiGithub, FiExternalLink } from 'react-icons/fi'
 
+import Portfolio from '../assets/projects/portfolio.png'
+import Todo_Renewed from '../assets/projects/todo_renewed.png'
+import WeatherApp from '../assets/projects/weatherApp.png'
+
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('all')
   
@@ -18,20 +22,20 @@ const Projects = () => {
     {
       title: "Task Management App",
       description: "A productivity application with drag-and-drop task management, project organization, and team collaboration features.",
-      technologies: ["React", "Node.js", "Express", "MongoDB", "Socket.io"],
-      image: "https://images.pexels.com/photos/6956353/pexels-photo-6956353.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+      technologies: ["React", "Node.js", "Express", "MongoDB", "Framer Motion", "Tailwind CSS"],
+      image: Todo_Renewed,
       category: "fullstack",
-      github: "#",
-      liveDemo: "#"
+      github: "https://github.com/soumya3969/Todo_Renewed",
+      liveDemo: "https://todo-renewed-f.vercel.app/"
     },
     {
-      title: "Weather Dashboard",
+      title: "Weather App",
       description: "Interactive weather dashboard showcasing current conditions and forecasts for locations worldwide.",
-      technologies: ["React", "OpenWeather API", "Chart.js", "Tailwind CSS"],
-      image: "https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+      technologies: ["JavaScript", "OpenWeatherMap API", "HTML5","CSS3" ,"Bootstrap 5"],
+      image: WeatherApp,
       category: "frontend",
-      github: "#",
-      liveDemo: "#"
+      github: "https://github.com/soumya3969/Weather_Web_App-mini-p",
+      liveDemo: "https://soumya3969.github.io/Weather_Web_App-mini-p/"
     },
     {
       title: "Social Media API",
@@ -55,10 +59,10 @@ const Projects = () => {
       title: "Portfolio Website",
       description: "Modern, responsive portfolio website with animations and interactive elements.",
       technologies: ["React", "Tailwind CSS", "Framer Motion", "Vite"],
-      image: "https://images.pexels.com/photos/196645/pexels-photo-196645.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+      image: Portfolio,
       category: "frontend",
-      github: "#",
-      liveDemo: "#"
+      github: "https://github.com/soumya3969/soumya.dev",
+      liveDemo: "https://soumya-dev-beryl.vercel.app/"
     }
   ]
 
@@ -147,26 +151,40 @@ const Projects = () => {
                 </div>
                 
                 <div className="flex justify-between space-x-4">
-                  <a 
-                    href={project.github} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex items-center text-gray-300 hover:text-white hover:shadow-glow-strong py-1 px-2 rounded-full transition-colors"
-                  >
-                    <FiGithub className="mr-1" />
-                    <span>Code</span>
-                  </a>
-                  
-                  {project.liveDemo && (
+                  {project.github && project.github !== '#' ? (
                     <a 
-                      href={project.liveDemo} 
+                      href={project.github} 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="flex items-center text-gray-300 hover:text-white hover:shadow-glow-strong py-1 px-2 rounded-full transition-colors"
                     >
-                      <FiExternalLink className="mr-1" />
-                      <span>Live Demo</span>
+                      <FiGithub className="mr-1" />
+                      <span>Code</span>
                     </a>
+                  ) : (
+                    <span className="flex items-center text-gray-500 cursor-not-allowed py-1 px-2 rounded-full opacity-60">
+                      <FiGithub className="mr-1" />
+                      <span>Code</span>
+                    </span>
+                  )}
+                  
+                  {project.liveDemo && (
+                    project.liveDemo !== '#' ? (
+                      <a 
+                        href={project.liveDemo} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="flex items-center text-gray-300 hover:text-white hover:shadow-glow-strong py-1 px-2 rounded-full transition-colors"
+                      >
+                        <FiExternalLink className="mr-1" />
+                        <span>Live Demo</span>
+                      </a>
+                    ) : (
+                      <span className="flex items-center text-gray-500 cursor-not-allowed py-1 px-2 rounded-full opacity-60">
+                        <FiExternalLink className="mr-1" />
+                        <span>Live Demo</span>
+                      </span>
+                    )
                   )}
                 </div>
               </div>
