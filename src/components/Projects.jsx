@@ -5,23 +5,25 @@ import { FiGithub, FiExternalLink } from 'react-icons/fi'
 import Portfolio from '../assets/projects/portfolio.png'
 import Todo_Renewed from '../assets/projects/todo_renewed.png'
 import WeatherApp from '../assets/projects/weatherApp.png'
+import BarcodeBackend from '../assets/projects/barcodeBackend.png'
+import BarcodeApp from '../assets/projects/barcodeApp.jpg'
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('all')
   
   const projects = [
     {
-      title: "E-commerce Platform",
-      description: "A full-featured e-commerce platform with product catalog, user authentication, cart functionality, and payment integration.",
-      technologies: ["React", "Node.js", "Express", "MongoDB", "Redux"],
-      image: "https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+      title: "Barcode Menu Restaurant",
+      description: "A QR code-based restaurant menu application with user authentication, post creation, and interaction features.",
+      technologies: ["React", "Node.js", "Express", "MongoDB", "MUI", "Tailwind CSS", "Framer Motion"],
+      image: BarcodeApp,
       category: "fullstack",
-      github: "#",
+      github: "https://github.com/dasjayadev/BarcodeApp",
       liveDemo: "#"
     },
     {
       title: "Task Management App",
-      description: "A productivity application with drag-and-drop task management, project organization, and team collaboration features.",
+      description: "A productivity application with CRUD Operation, Tasks organization, and Realtime data sync features.",
       technologies: ["React", "Node.js", "Express", "MongoDB", "Framer Motion", "Tailwind CSS"],
       image: Todo_Renewed,
       category: "fullstack",
@@ -38,12 +40,12 @@ const Projects = () => {
       liveDemo: "https://soumya3969.github.io/Weather_Web_App-mini-p/"
     },
     {
-      title: "Social Media API",
-      description: "RESTful API for a social media platform with user authentication, post creation, and interaction features.",
-      technologies: ["Node.js", "Express", "MongoDB", "JWT", "Socket.io"],
-      image: "https://images.pexels.com/photos/7015034/pexels-photo-7015034.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+      title: "Barcode App Backend",
+      description: "RESTful API for a QRcode Menu Restaurant platform with user authentication, post creation, and interaction features.",
+      technologies: ["Node.js", "Express", "MongoDB", "JWT", "Multer", "Vercel", "Vercel Blob Storage"],
+      image: BarcodeBackend,
       category: "backend",
-      github: "#",
+      github: "https://github.com/soumya3969/BarcodeApp-Backend",
       liveDemo: null
     },
     {
