@@ -8,6 +8,7 @@ import Projects from './components/Projects'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import { motion } from 'framer-motion'
+import { Analytics } from '@vercel/analytics/react'
 
 function App() {
   const [scrolled, setScrolled] = useState(false)
@@ -41,6 +42,7 @@ function App() {
         
         <Footer />
       </motion.div>
+      <Analytics />
     </div>
   )
 }

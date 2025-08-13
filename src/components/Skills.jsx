@@ -212,6 +212,7 @@ import {
   SiPostman,
   SiMongoose,
   SiSequelize,
+  SiKeycloak,
 } from "react-icons/si";
 
 const skills = [
@@ -253,12 +254,12 @@ const skills = [
   {
     name: "PostgreSQL",
     icon: <BiLogoPostgresql size={40} className='text-blue-400' />,
-    level: 65,
+    level: 75,
   },
   {
     name: "Sequelize",
     icon: <SiSequelize size={40} className='text-blue-400' />,
-    level: 70,
+    level: 80,
   },
   {
     name: "HTML5",
@@ -296,6 +297,11 @@ const skills = [
     name: "Git",
     icon: <FaGitAlt size={40} className='text-red-500' />,
     level: 85,
+  },
+  {
+    name: "Keycloak",
+    icon: <SiKeycloak size={40} className='text-blue-600' />,
+    level: 40,
   },
   {
     name: "Github",
