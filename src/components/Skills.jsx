@@ -352,7 +352,7 @@ const skillCategories = [
   },
   {
     title: "DevOps & Tools",
-    skills: ["Git", "Firebase", "Github", "Gitlab", "Postman", "vsCode"],
+    skills: ["Git", "Firebase", "Github", "Gitlab", "Postman", "Keycloak", "vsCode"],
   },
 ];
 
