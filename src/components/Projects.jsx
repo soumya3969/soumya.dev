@@ -7,6 +7,7 @@ import Todo_Renewed from '../assets/projects/todo_renewed.png'
 import WeatherApp from '../assets/projects/weatherApp.png'
 import BarcodeBackend from '../assets/projects/barcodeBackend.png'
 import BarcodeApp from '../assets/projects/barcodeApp.jpg'
+import AiQuizify from '../assets/projects/aiQuizify.png'
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('all')
@@ -49,13 +50,13 @@ const Projects = () => {
       liveDemo: null
     },
     {
-      title: "Fitness Tracker",
-      description: "Application to track workouts, nutritional data, and fitness progress with data visualization.",
-      technologies: ["React", "Node.js", "Express", "MongoDB", "Chart.js"],
-      image: "https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+      title: "Ai-Quizify (Quiz Genius)",
+      description: "Application to generate quizzes using AI, with user authentication and progress tracking.",
+      technologies: ["React", "Node.js", "Vite", "Firebase + Firestore", "Tailwind CSS"],
+      image: AiQuizify,
       category: "fullstack",
-      github: "#",
-      liveDemo: "#"
+      github: "https://github.com/soumya3969/Ai-Quizify",
+      liveDemo: "https://ai-quizify.netlify.app/"
     },
     {
       title: "Portfolio Website",

@@ -2,6 +2,7 @@ import { useState, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { FiMail, FiPhone, FiMapPin, FiSend, FiUser, FiMessageSquare } from 'react-icons/fi'
 import emailjs from '@emailjs/browser'
+import contactUs from '/images/contactUs.gif'
 
 const Contact = () => {
   const formRef = useRef()
@@ -140,9 +141,13 @@ const Contact = () => {
               
               <div className="hidden md:block mt-10">
                 <img 
-                  src="https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" 
+                  src={contactUs}
                   alt="Contact illustration"
-                  className="w-full h-auto rounded-lg opacity-75"
+                  className="w-full h-fit rounded-lg opacity-75 aspect-video bg-contain object-cover drop-shadow-[0_35px_35px_rgba(0,54,208,0.5)]"
+                  loading="lazy"
+                  style={{
+                    // filter: 'drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1))'
+                  }}
                 />
               </div>
             </div>
